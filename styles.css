@@ -1,0 +1,857 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 40px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.shield-icon {
+    width: 50px;
+    height: 50px;
+    color: #ffffff;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+}
+
+/* Search Section */
+.search-section {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    margin-bottom: 30px;
+}
+
+/* Action Bar with Print Button */
+.action-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.print-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.print-btn:hover {
+    background: #059669;
+}
+
+.print-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.search-container {
+    margin-bottom: 30px;
+}
+
+.input-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.warning-icon-small {
+    width: 20px;
+    height: 20px;
+    color: #f59e0b;
+}
+
+.search-input-group {
+    display: flex;
+    gap: 12px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 14px 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.search-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-btn:hover {
+    background: #5568d3;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Examples Section */
+.examples-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 25px;
+}
+
+.examples-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.book-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.examples-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.example-btn {
+    padding: 8px 16px;
+    background: #f3f4f6;
+    color: #374151;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.example-btn:hover {
+    background: #e0e7ff;
+    color: #667eea;
+}
+
+/* Results Section */
+.results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Risk Assessment Card */
+.risk-assessment-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+}
+
+.risk-header {
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.risk-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.warning-icon {
+    width: 28px;
+    height: 28px;
+    color: #f59e0b;
+    flex-shrink: 0;
+}
+
+.risk-title {
+    flex: 1;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.remove-btn {
+    padding: 8px;
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.remove-btn:hover {
+    background: #fee2e2;
+}
+
+.remove-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Risk Parameters */
+.risk-parameters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.parameter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.parameter-group label {
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.parameter-group select {
+    padding: 6px 12px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.parameter-group select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.risk-level {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.risk-low {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.risk-medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.risk-high {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Progress Group */
+.progress-group {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.progress-label {
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progress-bar {
+    width: 150px;
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #059669);
+    transition: width 0.3s ease;
+}
+
+.progress-percentage {
+    font-weight: 700;
+    color: #111827;
+    font-size: 0.9rem;
+    min-width: 40px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.stat-implemented {
+    background: #d1fae5;
+    border-color: #6ee7b7;
+    color: #065f46;
+}
+
+.stat-planned {
+    background: #dbeafe;
+    border-color: #93c5fd;
+    color: #1e40af;
+}
+
+.stat-not-implemented {
+    background: #fee2e2;
+    border-color: #fca5a5;
+    color: #991b1b;
+}
+
+.stat-not-applicable {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+    color: #374151;
+}
+
+/* Controls Table */
+.table-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.controls-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.controls-table thead {
+    background: #f9fafb;
+}
+
+.controls-table th {
+    padding: 16px;
+    text-align: left;
+    font-weight: 700;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+    white-space: nowrap;
+}
+
+.controls-table td {
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+}
+
+.controls-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.control-id {
+    font-weight: 700;
+    color: #667eea;
+    white-space: nowrap;
+}
+
+.control-title-cell {
+    font-weight: 600;
+    color: #111827;
+    min-width: 200px;
+}
+
+.control-description {
+    color: #6b7280;
+    line-height: 1.6;
+    min-width: 300px;
+}
+
+.control-category {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.category-organizational {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.category-people {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.category-physical {
+    background: #e9d5ff;
+    color: #6b21a8;
+}
+
+.category-technological {
+    background: #fed7aa;
+    color: #9a3412;
+}
+
+/* Status Select */
+.control-status-cell {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.status-select {
+    padding: 8px 12px;
+    border: 2px solid;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.status-select:focus {
+    outline: none;
+}
+
+.status-implemented {
+    background: #d1fae5;
+    color: #065f46;
+    border-color: #6ee7b7;
+}
+
+.status-planned {
+    background: #dbeafe;
+    color: #1e40af;
+    border-color: #93c5fd;
+}
+
+.status-not-implemented {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fca5a5;
+}
+
+.status-not-applicable {
+    background: #f3f4f6;
+    color: #374151;
+    border-color: #d1d5db;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.file-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .search-section,
+    .risk-assessment-card {
+        padding: 25px;
+    }
+
+    .search-input-group {
+        flex-direction: column;
+    }
+
+    .search-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .risk-parameters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .progress-group {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .controls-table {
+        font-size: 0.8rem;
+    }
+
+    .controls-table th,
+    .controls-table td {
+        padding: 10px;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    /* Reset body */
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    /* Hide elements that shouldn't print */
+    .no-print,
+    .search-section,
+    .footer,
+    .remove-btn,
+    .action-bar {
+        display: none !important;
+    }
+
+    /* Container adjustments */
+    .container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    /* Header adjustments */
+    .header {
+        padding-top: 0;
+        margin-bottom: 30px;
+        page-break-after: avoid;
+    }
+
+    .header-content {
+        justify-content: flex-start;
+    }
+
+    h1 {
+        color: #111827;
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        color: #6b7280;
+    }
+
+    .shield-icon {
+        color: #667eea;
+    }
+
+    /* Risk Assessment Cards */
+    .risk-assessment-card {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 2px solid #e5e7eb;
+        margin-bottom: 30px;
+        padding: 30px;
+    }
+
+    /* Risk Header */
+    .risk-title {
+        color: #111827;
+        font-size: 1.4rem;
+    }
+
+    .warning-icon {
+        color: #f59e0b;
+    }
+
+    /* Parameters - make more compact for print */
+    .risk-parameters {
+        gap: 15px;
+        font-size: 0.85rem;
+    }
+
+    .parameter-group select {
+        border: 1px solid #d1d5db;
+        padding: 4px 8px;
+        font-size: 0.85rem;
+    }
+
+    /* Progress bar */
+    .progress-bar {
+        border: 1px solid #d1d5db;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+        page-break-inside: avoid;
+        gap: 15px;
+    }
+
+    .stat-card {
+        border-width: 1px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    /* Table adjustments */
+    .table-container {
+        border: 1px solid #d1d5db;
+        page-break-inside: avoid;
+    }
+
+    .controls-table {
+        font-size: 0.75rem;
+    }
+
+    .controls-table th {
+        background: #f9fafb;
+        border-bottom: 2px solid #d1d5db;
+        padding: 10px 8px;
+        font-size: 0.75rem;
+    }
+
+    .controls-table td {
+        padding: 10px 8px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .controls-table tbody tr {
+        page-break-inside: avoid;
+    }
+
+    /* Status selects - show as plain text in print */
+    .status-select {
+        border: 1px solid;
+        padding: 4px 8px;
+        font-size: 0.7rem;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
+    /* Category badges */
+    .control-category {
+        padding: 3px 8px;
+        font-size: 0.7rem;
+        border: 1px solid currentColor;
+    }
+
+    /* Ensure proper text colors for print */
+    .category-organizational {
+        background: white;
+        color: #1e40af;
+        border-color: #1e40af;
+    }
+
+    .category-people {
+        background: white;
+        color: #065f46;
+        border-color: #065f46;
+    }
+
+    .category-physical {
+        background: white;
+        color: #6b21a8;
+        border-color: #6b21a8;
+    }
+
+    .category-technological {
+        background: white;
+        color: #9a3412;
+        border-color: #9a3412;
+    }
+
+    /* Status colors for print */
+    .status-implemented {
+        background: white;
+        color: #065f46;
+        border-color: #065f46;
+    }
+
+    .status-planned {
+        background: white;
+        color: #1e40af;
+        border-color: #1e40af;
+    }
+
+    .status-not-implemented {
+        background: white;
+        color: #991b1b;
+        border-color: #991b1b;
+    }
+
+    .status-not-applicable {
+        background: white;
+        color: #374151;
+        border-color: #374151;
+    }
+
+    /* Risk level badges */
+    .risk-low {
+        background: white;
+        color: #065f46;
+        border: 1px solid #065f46;
+    }
+
+    .risk-medium {
+        background: white;
+        color: #92400e;
+        border: 1px solid #92400e;
+    }
+
+    .risk-high {
+        background: white;
+        color: #991b1b;
+        border: 1px solid #991b1b;
+    }
+
+    /* Add page breaks between risk assessments */
+    .risk-assessment-card + .risk-assessment-card {
+        page-break-before: always;
+    }
+
+    /* Print header on each page */
+    .risk-assessment-card {
+        position: relative;
+    }
+
+    /* Ensure tables don't break awkwardly */
+    .controls-table thead {
+        display: table-header-group;
+    }
+
+    .controls-table tbody {
+        display: table-row-group;
+    }
+
+    /* Add footer to each page */
+    @page {
+        margin: 2cm;
+        @bottom-center {
+            content: "ISO 27001:2022 Risk Assessment Report - Page " counter(page);
+        }
+    }
+
+    /* Print-specific header */
+    .header::after {
+        content: "Risk Assessment Report - Generated " attr(data-date);
+        display: block;
+        font-size: 0.9rem;
+        color: #6b7280;
+        margin-top: 10px;
+    }
+}
