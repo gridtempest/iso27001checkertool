@@ -203,6 +203,261 @@ h1 {
     gap: 30px;
 }
 
+/* Risk Matrix Section */
+.risk-matrix-section {
+    margin-bottom: 30px;
+}
+
+.risk-matrix-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+}
+
+.matrix-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.matrix-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.matrix-icon {
+    width: 32px;
+    height: 32px;
+    color: #667eea;
+}
+
+.matrix-legend {
+    display: flex;
+    gap: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.legend-color {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.legend-color.risk-high {
+    background: linear-gradient(135deg, #fee2e2, #fca5a5);
+}
+
+.legend-color.risk-medium {
+    background: linear-gradient(135deg, #fef3c7, #fcd34d);
+}
+
+.legend-color.risk-low {
+    background: linear-gradient(135deg, #d1fae5, #6ee7b7);
+}
+
+/* Matrix Grid Container */
+.matrix-grid-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.matrix-y-label {
+    display: flex;
+    align-items: center;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.y-label-text {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #374151;
+    letter-spacing: 1px;
+}
+
+.matrix-content {
+    flex: 1;
+}
+
+.matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.matrix-cell {
+    aspect-ratio: 1;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: 80px;
+}
+
+.matrix-cell:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.matrix-cell.risk-low {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    border-color: #6ee7b7;
+}
+
+.matrix-cell.risk-medium {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-color: #fcd34d;
+}
+
+.matrix-cell.risk-high {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    border-color: #fca5a5;
+}
+
+.cell-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 4px;
+}
+
+.cell-count {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: 1;
+}
+
+.cell-risks {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    right: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-height: 40px;
+    overflow: hidden;
+}
+
+.risk-badge {
+    font-size: 0.55rem;
+    padding: 2px 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #374151;
+    font-weight: 600;
+}
+
+/* Matrix Axis Labels */
+.matrix-x-axis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.x-label {
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: #374151;
+}
+
+.matrix-x-label {
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #374151;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+
+/* Matrix Summary */
+.matrix-summary {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.summary-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.summary-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.summary-high {
+    color: #dc2626;
+}
+
+.summary-medium {
+    color: #d97706;
+}
+
+.summary-low {
+    color: #059669;
+}
+
+/* Highlight Animation */
+@keyframes highlight {
+    0%, 100% {
+        background: white;
+    }
+    50% {
+        background: #e0e7ff;
+    }
+}
+
 /* Risk Assessment Card */
 .risk-assessment-card {
     background: white;
@@ -601,6 +856,37 @@ h1 {
     .controls-table td {
         padding: 10px;
     }
+    
+    /* Risk Matrix Responsive */
+    .matrix-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .matrix-legend {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .matrix-grid-container {
+        flex-direction: column;
+    }
+    
+    .matrix-y-label {
+        writing-mode: horizontal-tb;
+        transform: none;
+        margin-bottom: 10px;
+    }
+    
+    .cell-count {
+        font-size: 2rem;
+    }
+    
+    .matrix-summary {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 }
 
 /* ============================================
@@ -660,6 +946,53 @@ h1 {
         border: 2px solid #e5e7eb;
         margin-bottom: 30px;
         padding: 30px;
+    }
+    
+    /* Risk Matrix for Print */
+    .risk-matrix-card {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 2px solid #e5e7eb;
+        margin-bottom: 30px;
+        padding: 30px;
+    }
+    
+    .matrix-cell {
+        border-width: 2px;
+    }
+    
+    .matrix-cell.risk-low {
+        background: white;
+        border-color: #059669;
+    }
+    
+    .matrix-cell.risk-medium {
+        background: white;
+        border-color: #d97706;
+    }
+    
+    .matrix-cell.risk-high {
+        background: white;
+        border-color: #dc2626;
+    }
+    
+    .cell-count {
+        color: #111827;
+    }
+    
+    .legend-color.risk-high {
+        background: white;
+        border-color: #dc2626;
+    }
+    
+    .legend-color.risk-medium {
+        background: white;
+        border-color: #d97706;
+    }
+    
+    .legend-color.risk-low {
+        background: white;
+        border-color: #059669;
     }
 
     /* Risk Header */
