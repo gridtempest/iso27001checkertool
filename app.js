@@ -82,6 +82,48 @@ function getImplementationStats(controls) {
     return { total, implemented, planned, notImplemented, notApplicable, percentage };
 }
 
+// ========== LOCALSTORAGE FUNCTIONS ==========
+
+// Save to localStorage
+function saveToLocalStorage() {
+    try {
+        localStorage.setItem('iso27001_risks', JSON.stringify(riskAssessments));
+        console.log('✅ Saved', riskAssessments.length, 'risks to localStorage');
+    } catch (e) {
+        console.error('❌ Save failed:', e);
+        alert('Failed to save data. Storage may be full.');
+    }
+}
+
+// Load from localStorage
+function loadFromLocalStorage() {
+    try {
+        const saved = localStorage.getItem('iso27001_risks');
+        if (saved) {
+            riskAssessments = JSON.parse(saved);
+            console.log('✅ Loaded', riskAssessments.length, 'risks from localStorage');
+            displayRiskAssessments();
+        } else {
+            console.log('ℹ️ No saved data found - starting fresh');
+        }
+    } catch (e) {
+        console.error('❌ Load failed:', e);
+        riskAssessments = [];
+    }
+}
+
+// Clear all data (optional - for testing)
+function clearAllData() {
+    if (confirm('Are you sure you want to delete all risks? This cannot be undone.')) {
+        localStorage.removeItem('iso27001_risks');
+        riskAssessments = [];
+        displayRiskAssessments();
+        console.log('🗑️ All data cleared');
+    }
+}
+
+// ========== END LOCALSTORAGE FUNCTIONS ==========
+
 // Add new risk assessment
 function handleAddRisk() {
     const riskInput = document.getElementById('riskInput').value.trim();
@@ -101,6 +143,7 @@ function handleAddRisk() {
         
         riskAssessments.push(newAssessment);
         document.getElementById('riskInput').value = '';
+        saveToLocalStorage(); // ← SAVE AFTER ADDING
         displayRiskAssessments();
     }
 }
@@ -108,6 +151,7 @@ function handleAddRisk() {
 // Remove risk assessment
 function handleRemoveRisk(id) {
     riskAssessments = riskAssessments.filter(r => r.id !== id);
+    saveToLocalStorage(); // ← SAVE AFTER REMOVING
     displayRiskAssessments();
 }
 
@@ -124,6 +168,7 @@ function handleStatusChange(riskId, controlId, newStatus) {
         }
         return risk;
     });
+    saveToLocalStorage(); // ← SAVE AFTER STATUS CHANGE
     displayRiskAssessments();
 }
 
@@ -132,6 +177,7 @@ function handleLikelihoodChange(riskId, value) {
     riskAssessments = riskAssessments.map(risk => 
         risk.id === riskId ? { ...risk, likelihood: value } : risk
     );
+    saveToLocalStorage(); // ← SAVE AFTER LIKELIHOOD CHANGE
     displayRiskAssessments();
 }
 
@@ -140,6 +186,7 @@ function handleImpactChange(riskId, value) {
     riskAssessments = riskAssessments.map(risk => 
         risk.id === riskId ? { ...risk, impact: value } : risk
     );
+    saveToLocalStorage(); // ← SAVE AFTER IMPACT CHANGE
     displayRiskAssessments();
 }
 
@@ -317,6 +364,74 @@ function showRisksInCell(likelihood, impact) {
     }
 }
 
+// ========== RISK MANAGEMENT FUNCTIONS ==========
+
+// Add new risk assessment
+function handleAddRisk() {
+    const riskInput = document.getElementById('riskInput').value.trim();
+    
+    if (riskInput) {
+        const controls = findRelevantControls(riskInput);
+        const newAssessment = {
+            id: Date.now(),
+            risk: riskInput,
+            likelihood: 'Medium',
+            impact: 'Medium',
+            controls: controls.map(c => ({
+                ...c,
+                status: 'Not Implemented'
+            }))
+        };
+        
+        riskAssessments.push(newAssessment);
+        document.getElementById('riskInput').value = '';
+        saveToLocalStorage(); // ← SAVE AFTER ADDING
+        displayRiskAssessments();
+    }
+}
+
+// Remove risk assessment
+function handleRemoveRisk(id) {
+    riskAssessments = riskAssessments.filter(r => r.id !== id);
+    saveToLocalStorage(); // ← SAVE AFTER REMOVING
+    displayRiskAssessments();
+}
+
+// Update control status
+function handleStatusChange(riskId, controlId, newStatus) {
+    riskAssessments = riskAssessments.map(risk => {
+        if (risk.id === riskId) {
+            return {
+                ...risk,
+                controls: risk.controls.map(control => 
+                    control.id === controlId ? { ...control, status: newStatus } : control
+                )
+            };
+        }
+        return risk;
+    });
+    saveToLocalStorage(); // ← SAVE AFTER STATUS CHANGE
+    displayRiskAssessments();
+}
+
+// Update likelihood
+function handleLikelihoodChange(riskId, value) {
+    riskAssessments = riskAssessments.map(risk => 
+        risk.id === riskId ? { ...risk, likelihood: value } : risk
+    );
+    saveToLocalStorage(); // ← SAVE AFTER LIKELIHOOD CHANGE
+    displayRiskAssessments();
+}
+
+// Update impact
+function handleImpactChange(riskId, value) {
+    riskAssessments = riskAssessments.map(risk => 
+        risk.id === riskId ? { ...risk, impact: value } : risk
+    );
+    saveToLocalStorage(); // ← SAVE AFTER IMPACT CHANGE
+    displayRiskAssessments();
+}
+
 // Display all risk assessments
 function displayRiskAssessments() {
     const container = document.getElementById('assessmentsContainer');
@@ -492,6 +607,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load examples
     loadExamples();
     
+    // Load saved data from localStorage
+    loadFromLocalStorage(); // ← CRITICAL: Load data on page start
+    
     // Add risk button click
     document.getElementById('addRiskBtn').addEventListener('click', handleAddRisk);
     
@@ -507,4 +625,7 @@ document.addEventListener('DOMContentLoaded', function() {
             handleAddRisk();
         }
     });
+    
+    console.log('🚀 ISO 27001 Tool initialized');
+    console.log('💾 LocalStorage available:', typeof(Storage) !== "undefined");
 });
