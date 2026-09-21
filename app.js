@@ -476,16 +476,16 @@ function displayRiskAssessments() {
                         <tbody>
                             ${assessment.controls.map((control, idx) => `
                                 <tr>
-                                    <td class="control-id">${control.id}</td>
-                                    <td class="control-title-cell">${control.title}</td>
-                                    <td>
+                                    <td class="control-id" data-label="Control ID">${control.id}</td>
+                                    <td class="control-title-cell" data-label="Control Title">${control.title}</td>
+                                    <td data-label="Category">
                                         <span class="control-category ${getCategoryClass(control.category)}">
                                             ${control.category}
                                         </span>
                                     </td>
-                                    <td class="control-description">${control.description}</td>
-                                    <td class="control-status-cell">
-                                        <select 
+                                    <td class="control-description" data-label="Description">${control.description}</td>
+                                    <td class="control-status-cell" data-label="Implementation Status">
+                                        <select
                                             class="status-select ${getStatusClass(control.status)}"
                                             onchange="handleStatusChange(${assessment.id}, '${control.id}', this.value)"
                                         >

@@ -141,25 +141,12 @@ body {
     animation: fadeInDown 0.6s ease both;
 }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    margin-bottom: 12px;
-}
-
-.shield-icon {
-    width: 34px;
-    height: 34px;
-    color: var(--accent);
-}
-
 h1 {
     color: var(--text);
     font-size: 2.1rem;
     font-weight: 600;
     letter-spacing: -0.01em;
+    margin-bottom: 8px;
 }
 
 .subtitle {
@@ -1106,6 +1093,61 @@ h1 {
     }
 }
 
+/* Stack the controls table into cards on phones instead of a
+   horizontal-scroll table, whose off-screen columns otherwise
+   stretch row height and leave large blank gaps in the visible cells */
+@media (max-width: 640px) {
+    .table-container {
+        overflow-x: visible;
+        border: none;
+    }
+
+    .controls-table thead {
+        display: none;
+    }
+
+    .controls-table,
+    .controls-table tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .controls-table tr {
+        display: block;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 14px;
+        margin-bottom: 10px;
+    }
+
+    .controls-table tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .controls-table td {
+        display: block;
+        padding: 6px 0;
+        border-bottom: none;
+        min-width: 0;
+    }
+
+    .controls-table td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--text-faint);
+        margin-bottom: 3px;
+    }
+
+    .control-status-cell {
+        text-align: left;
+    }
+}
+
 /* ============================================
    PRINT STYLES
    Printed reports stay ink-friendly (dark text
@@ -1156,8 +1198,8 @@ h1 {
         page-break-after: avoid;
     }
 
-    .header-content {
-        justify-content: flex-start;
+    .header {
+        text-align: left;
     }
 
     h1 {
@@ -1167,10 +1209,6 @@ h1 {
 
     .subtitle {
         color: #6b7280;
-    }
-
-    .shield-icon {
-        color: #2d7d76;
     }
 
     /* Risk Assessment Cards */
@@ -1473,13 +1511,44 @@ h1 {
         position: relative;
     }
 
-    /* Ensure tables don't break awkwardly */
+    /* Ensure tables don't break awkwardly, and always print as a real
+       table even though phone widths collapse it into stacked cards on screen */
+    .table-container {
+        overflow-x: visible;
+    }
+
+    .controls-table,
+    .controls-table tbody {
+        display: table;
+    }
+
+    .controls-table {
+        display: table;
+        width: 100%;
+    }
+
     .controls-table thead {
         display: table-header-group;
     }
 
     .controls-table tbody {
         display: table-row-group;
+    }
+
+    .controls-table tr {
+        display: table-row;
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .controls-table td {
+        display: table-cell;
+    }
+
+    .controls-table td::before {
+        content: none;
     }
 
     /* Add footer to each page */
