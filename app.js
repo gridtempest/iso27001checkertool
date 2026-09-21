@@ -143,7 +143,7 @@ function handleAddRisk() {
         
         riskAssessments.push(newAssessment);
         document.getElementById('riskInput').value = '';
-        saveToLocalStorage(); // ← SAVE AFTER ADDING
+        saveToLocalStorage();
         displayRiskAssessments();
     }
 }
@@ -151,7 +151,7 @@ function handleAddRisk() {
 // Remove risk assessment
 function handleRemoveRisk(id) {
     riskAssessments = riskAssessments.filter(r => r.id !== id);
-    saveToLocalStorage(); // ← SAVE AFTER REMOVING
+    saveToLocalStorage();
     displayRiskAssessments();
 }
 
@@ -168,25 +168,25 @@ function handleStatusChange(riskId, controlId, newStatus) {
         }
         return risk;
     });
-    saveToLocalStorage(); // ← SAVE AFTER STATUS CHANGE
+    saveToLocalStorage();
     displayRiskAssessments();
 }
 
 // Update likelihood
 function handleLikelihoodChange(riskId, value) {
-    riskAssessments = riskAssessments.map(risk => 
+    riskAssessments = riskAssessments.map(risk =>
         risk.id === riskId ? { ...risk, likelihood: value } : risk
     );
-    saveToLocalStorage(); // ← SAVE AFTER LIKELIHOOD CHANGE
+    saveToLocalStorage();
     displayRiskAssessments();
 }
 
 // Update impact
 function handleImpactChange(riskId, value) {
-    riskAssessments = riskAssessments.map(risk => 
+    riskAssessments = riskAssessments.map(risk =>
         risk.id === riskId ? { ...risk, impact: value } : risk
     );
-    saveToLocalStorage(); // ← SAVE AFTER IMPACT CHANGE
+    saveToLocalStorage();
     displayRiskAssessments();
 }
 
@@ -362,74 +362,6 @@ function showRisksInCell(likelihood, impact) {
         firstRiskElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         firstRiskElement.style.animation = 'highlight 2s ease';
     }
-}
-
-// ========== RISK MANAGEMENT FUNCTIONS ==========
-
-// Add new risk assessment
-function handleAddRisk() {
-    const riskInput = document.getElementById('riskInput').value.trim();
-    
-    if (riskInput) {
-        const controls = findRelevantControls(riskInput);
-        const newAssessment = {
-            id: Date.now(),
-            risk: riskInput,
-            likelihood: 'Medium',
-            impact: 'Medium',
-            controls: controls.map(c => ({
-                ...c,
-                status: 'Not Implemented'
-            }))
-        };
-        
-        riskAssessments.push(newAssessment);
-        document.getElementById('riskInput').value = '';
-        saveToLocalStorage(); // ← SAVE AFTER ADDING
-        displayRiskAssessments();
-    }
-}
-
-// Remove risk assessment
-function handleRemoveRisk(id) {
-    riskAssessments = riskAssessments.filter(r => r.id !== id);
-    saveToLocalStorage(); // ← SAVE AFTER REMOVING
-    displayRiskAssessments();
-}
-
-// Update control status
-function handleStatusChange(riskId, controlId, newStatus) {
-    riskAssessments = riskAssessments.map(risk => {
-        if (risk.id === riskId) {
-            return {
-                ...risk,
-                controls: risk.controls.map(control => 
-                    control.id === controlId ? { ...control, status: newStatus } : control
-                )
-            };
-        }
-        return risk;
-    });
-    saveToLocalStorage(); // ← SAVE AFTER STATUS CHANGE
-    displayRiskAssessments();
-}
-
-// Update likelihood
-function handleLikelihoodChange(riskId, value) {
-    riskAssessments = riskAssessments.map(risk => 
-        risk.id === riskId ? { ...risk, likelihood: value } : risk
-    );
-    saveToLocalStorage(); // ← SAVE AFTER LIKELIHOOD CHANGE
-    displayRiskAssessments();
-}
-
-// Update impact
-function handleImpactChange(riskId, value) {
-    riskAssessments = riskAssessments.map(risk => 
-        risk.id === riskId ? { ...risk, impact: value } : risk
-    );
-    saveToLocalStorage(); // ← SAVE AFTER IMPACT CHANGE
-    displayRiskAssessments();
 }
 
 // Display all risk assessments
